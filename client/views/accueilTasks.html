@@ -1,0 +1,39 @@
+<template name="accueilTasks">
+	<div class="container ">
+		<div class="row dateClass well">
+			<div class="col-md-4">
+				<a href="" class="pull-right"> ---day before</a>
+			</div>
+				<div class="col-md-4">
+					<h3 class="text-center">Today : {{ today }}</h3>
+			</div>
+				<div class="col-md-4">
+					<a href="" class="pull-left">tomorrow---</a>
+			</div>
+		</div>
+		<form role="form" class="todoForm">
+			<div class="form-group">
+				
+				<input type="text" class="form-control taskClass input-lg" id="task1" placeholder="New Task">
+			</div>
+		</form>
+		
+		<div class="todoBlock">
+			{{#each tasks}}
+			<div class="row todoItem">
+				<div class="col-md-1">
+				
+							<span class="pull-left bigger blue2 glyphicon glyphicon-question-sign"></span>
+
+				</div>		
+				<div class="col-md-7">
+					{{ textTask }}
+				</div>	
+				<div class="col-md-4">
+					{{ author }} - {{ submitted }} 
+				</div>
+			</div>	
+			{{/each}}
+		</div>
+	</div>
+</template>

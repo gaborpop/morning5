@@ -1,8 +1,30 @@
 <template name="layout">
+		<div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+					<a class="blog-nav-item active" href="/">Morning5</a>
+					
+					{{#if currentUser}}
+					
+					<a class="blog-nav-item text-right floatright" href="/sign-out">Sign-out</a>
+					<a class="blog-nav-item text-right floatright" href="{{pathFor 'accueilTasks'}}">Todos</a>
+					{{else}}
+         	<a class="blog-nav-item text-right floatright" href="/sign-in">Sign-in</a>
+					<a class="blog-nav-item text-right floatright" href="/sign-up">Sign-up</a>
+					{{/if}}
+        </nav>
+      </div>
+    </div>
+	
 	<div class="container">
-		<h1>Hello Morning 5 !</h1>
+		
 	</div>	
 	{{yield}}
-	
+	<div class="blog-footer">
+      <p>App built by <a href="http://www.carrouselstudio.fr/">Carrousel Studio</a> copyright 2014</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
 	
 </template>
