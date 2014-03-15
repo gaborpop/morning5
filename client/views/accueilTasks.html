@@ -17,22 +17,73 @@
 				<input type="text" class="form-control taskClass input-lg" id="task1" placeholder="New Task">
 			</div>
 		</form>
+    
+    
+    <div class="progress progress-striped">
+  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+    <span class="sr-only">80% Complete (danger)</span>
+  </div>
+</div>
+    
 		
 		<div class="todoBlock">
 			{{#each tasks}}
-			<div class="row todoItem">
-				<div class="col-md-1">
-				
-							<span class="pull-left bigger blue2 glyphicon glyphicon-question-sign"></span>
-
-				</div>		
-				<div class="col-md-7">
-					{{ textTask }}
-				</div>	
-				<div class="col-md-4">
-					{{ author }} - {{ submitted }} 
-				</div>
-			</div>	
+        {{#if doneTask}}
+                <div class="row todoItem">
+                  <div class="col-md-1">
+                  
+                        <div class="checkbox3"></div>
+          
+                  </div>		
+                  <div class="col-md-10">
+                    {{#if editing}}
+                      <div class="edit">
+                        <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
+                      </div>
+                    {{else}}
+                      <div class="display">
+                        
+                        <div class="todo-text  doneItem">{{textTask}}</div>
+                      </div>
+                    {{/if}}
+                    </div>
+                      <div class="col-md-1">
+                  
+                        <a href="" class="destroy">suppr.</a>
+          
+                          
+                  </div>	
+                  
+                </div>	
+         {{else}}  
+               <div class="row todoItem">
+                  <div class="col-md-1">
+                 
+                    <div class="checkbox2"></div>
+          
+                  </div>		
+                  <div class="col-md-10">
+                    {{#if editing}}
+                      <div class="edit">
+                        <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
+                      </div>
+                    {{else}}
+                      <div class="display">
+                        
+                        <div class="todo-text">{{textTask}}</div>
+                      </div>
+                    {{/if}}
+                    </div>
+                      <div class="col-md-1">
+                  
+                        <a href="" class="destroy">suppr.</a>
+          
+                          
+                  </div>	
+                  
+                </div>	
+      
+       {{/if}}
 			{{/each}}
 		</div>
 	</div>

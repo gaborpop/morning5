@@ -189,3 +189,51 @@ h6, .h6 {
 .dateClass a {
 	font-size:16px;
 }
+#todo-input {
+ font-size:24px;
+ margin-top:0px; 
+}
+.destroy {
+	font-size:16px;
+}
+.doneItem {
+	text-decoration:line-through;
+}
+
+.checkbox2 {
+    width:30px;
+  height:30px;
+    background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+  cursor:pointer;
+  
+
+color: #99a1a7;
+}
+
+.checkbox3 {
+    width:30px;
+  height:30px;
+    background-color: #fafafa;
+  border: 1px solid green;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+  padding: 9px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+  cursor:pointer;
+}
+.checkbox3:after {
+  content: '\2714';
+font-size: 22px;
+position: absolute;
+top: 0px;
+left: 21px;
+color: green;
+}
+

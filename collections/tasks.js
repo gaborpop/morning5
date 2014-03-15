@@ -23,7 +23,7 @@ Meteor.methods({
     var task = _.extend(_.pick(postAttributes, 'textTask'), {
       userId: user._id, 
       author: user.emails.adress, 
-      statusTaks: 'noOk',
+      doneTask: false,
       submitted: new Date().getTime(),
       modifiedStatus: new Date().getTime()
       //temperature: templatevins[Session.get("compteur")]["Région"]
