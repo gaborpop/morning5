@@ -21,7 +21,12 @@ Template.accueilTasks.helpers({
 		var currentMonth = currentDate.getMonth()+1;
 		var currentDay = currentDate.getDate();
 		return currentDay + '/' + currentMonth + '/' + currentYear;
-	}
+	},
+  advancement: function() {
+    var nbTaskDone = Tasks.find({doneTask:true}).count();
+    var nbTask = Tasks.find().count();
+    return nbTaskDone/nbTask * 100; 
+  }
 	
 	
 
