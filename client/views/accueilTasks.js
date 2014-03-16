@@ -4,27 +4,38 @@ var activateInput = function (input) {
   input.select();
 }
 Template.accueilTasks.helpers({
-	tasks: function() {
-		return Tasks.find();
-		
-  },
+	
 	editing:  function () {
   return Session.equals('editing_itemname', this._id);
-},
+  },
+  daybefore:  function () {
+   var yesterday = Session.get('previousDate');
+   
+  return yesterday;  
 
+ 
+  },
+  dayafter:  function () {
+  var tomorrow = Session.get('nextDate');
+   
+  return tomorrow;  
+  
+  
+  },
 	
 	
 	
 	today: function() {
-		var currentDate = new Date();
-		var currentYear = currentDate.getFullYear();
-		var currentMonth = currentDate.getMonth()+1;
-		var currentDay = currentDate.getDate();
-		return currentDay + '/' + currentMonth + '/' + currentYear;
+    
+	
+    return Session.get('viewDate');
+    
+    
 	},
+  
   advancement: function() {
-    var nbTaskDone = Tasks.find({doneTask:true}).count();
-    var nbTask = Tasks.find().count();
+    var nbTaskDone = Tasks.find({doneTask:true, submittedRealDate: Session.get('viewDate') }).count();
+    var nbTask = Tasks.find({submittedRealDate: Session.get('viewDate') }).count();
     return nbTaskDone/nbTask * 100; 
   }
 	
@@ -38,7 +49,17 @@ Template.accueilTasks.events ({
     //e.preventDefault();
     if (e.which === 13) {
       var url = template.find(".taskClass").value;
-			var taskProperties = { textTask : url};
+      
+      var creaDate = Session.get('viewDate');
+       var creaDate2 = new Date();
+    
+     creaDate2.setDate(parseInt(creaDate.split("/")[0]));
+      creaDate2.setMonth(parseInt(creaDate.split("/")[1]-1));
+      creaDate2.setYear(parseInt(creaDate.split("/")[2]));
+      var creaDateFull = creaDate2.getDate()+'/'+(creaDate2.getMonth()+1) +'/'+ creaDate2.getFullYear();
+      
+      
+      var taskProperties = { textTask : url, submittedRealDate : creaDateFull  };
 			Meteor.call('task', taskProperties, function(error, id) {});
 			}
 

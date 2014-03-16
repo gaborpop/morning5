@@ -2,7 +2,7 @@ Meteor.startup ->
   AccountsEntry.config
     
     homeRoute: '/'
-    dashboardRoute: '/todos'
+    dashboardRoute: '/'
     profileRoute: 'profile'
     passwordSignupFields: 'EMAIL_ONLY'
   
