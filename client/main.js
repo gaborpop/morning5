@@ -1,8 +1,11 @@
 Meteor.subscribe('tasks');
 
 Meteor.startup(function () {
-  var curDate = new Date();
- 
+  var oneMomentPlease = moment();
+	var oneMonth = oneMomentPlease.month();
+	alert(oneMonth);
+	var curDate = new Date();
+
 		var currentYear = curDate.getFullYear();
 		var currentMonth = curDate.getMonth()+1;
 		var currentDay = curDate.getDate();
@@ -18,5 +21,10 @@ Meteor.startup(function () {
   });
 
 Handlebars.registerHelper('date',function(input){
-    return Session.get('date');
+  var day = parseInt(Session.get('date').split("/")[0]);
+	var month = parseInt(Session.get('date').split("/")[1]);
+	var year =	parseInt(Session.get('date').split("/")[2]);
+	var date = day +'/'+month+'/'+year;
+	
+	return date;
 });

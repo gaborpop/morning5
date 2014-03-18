@@ -6,7 +6,9 @@
       "iron-router": {},
       "accounts-entry": {},
       "accounts-ui-bootstrap-3": {},
-      "spin": {}
+      "spin": {},
+      "fast-render": {},
+      "moment": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -33,6 +35,16 @@
         "git": "https://github.com/SachaG/meteor-spin.git",
         "tag": "v0.2.2",
         "commit": "3f655f0016228e4195acc784c45d3e3a247dc39f"
+      },
+      "fast-render": {
+        "git": "https://github.com/arunoda/meteor-fast-render.git",
+        "tag": "v0.1.19",
+        "commit": "9e9a34e51885474c0dd9ed7a64dbff7ee9d4315c"
+      },
+      "moment": {
+        "git": "https://github.com/acreeger/meteor-moment.git",
+        "tag": "v2.5.1",
+        "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",

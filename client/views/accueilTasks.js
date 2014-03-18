@@ -4,7 +4,7 @@ var activateInput = function (input) {
   input.select();
 }
 Template.accueilTasks.helpers({
-	
+  
 	editing:  function () {
   return Session.equals('editing_itemname', this._id);
   },
@@ -61,6 +61,8 @@ Template.accueilTasks.events ({
       
       var taskProperties = { textTask : url, submittedRealDate : creaDateFull  };
 			Meteor.call('task', taskProperties, function(error, id) {});
+			
+			//Router.go('accueilTasks', {date: parseInt(creaDate.split("/")[0]), month: parseInt(creaDate.split("/")[1]), year: parseInt(creaDate.split("/")[2])});
 			}
 
 		},   

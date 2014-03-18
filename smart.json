@@ -4,6 +4,8 @@
     "iron-router": {},
     "accounts-entry": {},
     "accounts-ui-bootstrap-3": {},
-    "spin": {}
+    "spin": {},
+    "fast-render": {},
+    "moment": {}
   }
 }

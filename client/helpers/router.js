@@ -11,30 +11,35 @@ Router.map( function () {
   });
   this.route('accueilTasks', {
     path: '/todos/:date/:month/:year',
-    
+		waitOn: function () {
+    return Meteor.subscribe('tasks');},
+    fastRender: true,
     data: function () {
-      var curD = this.params.date;
-      var curM = this.params.month;
-      var curY = this.params.year;
-       
+      var curD = parseInt(this.params.date);
+      var curM = parseInt(this.params.month);
+      var curY = parseInt(this.params.year);
+      
       var thedate = curD +'/'+ curM +'/'+ curY;
      
       
       var newDate = new Date();
-      newDate.setDate(parseInt(curD));
-      newDate.setMonth(parseInt(curM)-1);
-      newDate.setYear(parseInt(curY));
+      newDate.setDate(curD);
+      newDate.setMonth(curM);
+      newDate.setYear(curY);
       
       var prevDate = new Date();
-      prevDate.setDate(parseInt(curD)-1);
-      prevDate.setMonth(parseInt(curM));
-      prevDate.setYear(parseInt(curY));
+			prevDate.setTime(newDate.getTime() - 24 * 3600 * 1000);
+			
+      //prevDate.setDate(parseInt(curD)-1);
+      //prevDate.setMonth((parseInt(curM)));
+      //prevDate.setYear(parseInt(curY));
     
       var nextDate = new Date();
-      nextDate.setDate(parseInt(curD)+1);
+			nextDate.setTime(newDate.getTime() + 24 * 3600 * 1000);
+      //nextDate.setDate(parseInt(curD)+1);
     
-      nextDate.setMonth(parseInt(curM));
-      nextDate.setYear(parseInt(curY));
+			//nextDate.setMonth((parseInt(curM)));
+      //nextDate.setYear(parseInt(curY));
       
       console.log('new Date is ' + newDate);
       console.log('Previous Date is ' + prevDate);
