@@ -116,7 +116,7 @@ Template.accueilTasks.events ({
 		 newDate.setMonth(months[this.submittedRealDate.split("-")[1]]);
 		 newDate.setFullYear(this.submittedRealDate.split("-")[2]);
 		 newDate.setTime(newDate.getTime()+ 24 * 3600 * 1000);
-		 alert(newDate);
+		 
 		 
 		 Tasks.update(this._id, {$set: {submittedRealDate: newDate.getDate() + "-" + months1[newDate.getMonth()] + "-" + newDate.getFullYear()}});
    }  
