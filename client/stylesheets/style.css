@@ -236,5 +236,26 @@ top: 0px;
 left: 21px;
 color: green;
 }
-
+.datePetit {
+	font-size:8px;
+}
+.actions {
+	font-size:16px;
+}
+.destroy {
+	cursor: pointer;
+	font-size:26px;
+}
+.destroy:hover {
+	
+	text-decoration:underline;
+}
+.action {
+	cursor: pointer;
+	font-size:26px;
+}
+.action:hover {
+	
+	text-decoration:underline;
+}
 

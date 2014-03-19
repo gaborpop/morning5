@@ -9,18 +9,24 @@ Template.accueilTasks.helpers({
   return Session.equals('editing_itemname', this._id);
   },
   daybefore:  function () {
-   var yesterday = Session.get('previousDate');
-   
-  return yesterday;  
+ 	var yesterday = Session.get('realDate');
+  yesterday.setTime(yesterday.getTime()- 24 * 3600 * 1000);
+	var months = {'0':'Jan', '1':'Feb', '2':'Mar', '3':'Apr', '4':'May','5':'Jun', '6':'July', '7':'Aug', '8':'Sept', '9':'Oct', '10':'Nov', '11':'Dec'};
+		
+  var yesterday1 = yesterday.getDate()+'/'+months[yesterday.getMonth()]+'/'+yesterday.getFullYear();
+		
+		
+	return yesterday1;  
 
  
   },
   dayafter:  function () {
-  var tomorrow = Session.get('nextDate');
-   
-  return tomorrow;  
-  
-  
+  var tomorrow = Session.get('realDate');
+  tomorrow.setTime(tomorrow.getTime()+ 24 * 3600 * 1000);
+		var months = {'0':'Jan', '1':'Feb', '2':'Mar', '3':'Apr', '4':'May','5':'Jun', '6':'July', '7':'Aug', '8':'Sept', '9':'Oct', '10':'Nov', '11':'Dec'};
+    
+  var tomorrow1 = tomorrow.getDate()+'/'+months[tomorrow.getMonth()]+'/'+tomorrow.getFullYear();
+  return tomorrow1;
   },
 	
 	
@@ -51,15 +57,16 @@ Template.accueilTasks.events ({
       var url = template.find(".taskClass").value;
       
       var creaDate = Session.get('viewDate');
-       var creaDate2 = new Date();
+       //var creaDate2 = new Date();
     
-     creaDate2.setDate(parseInt(creaDate.split("/")[0]));
-      creaDate2.setMonth(parseInt(creaDate.split("/")[1]-1));
-      creaDate2.setYear(parseInt(creaDate.split("/")[2]));
-      var creaDateFull = creaDate2.getDate()+'/'+(creaDate2.getMonth()+1) +'/'+ creaDate2.getFullYear();
+     //creaDate2.setDate(parseInt(creaDate.split("-")[0]));
+      //creaDate2.setMonth(creaDate.split("-")[1]);
+      //creaDate2.setYear(parseInt(creaDate.split("-")[2]));
+			//var months = {'Jan':'0', 'Feb':'1', 'Mar':'2', 'Apr':'3', 'May':'4','Jun':'5', 'July':'6', 'Aug':'7', 'Sept':'8', 'Oct':'9', 'Nov':'10', 'Dec':'11'};
+			//var creaDateFull = creaDate2.getDate()+'/'+months[] +'/'+ creaDate2.getFullYear();
+     
       
-      
-      var taskProperties = { textTask : url, submittedRealDate : creaDateFull  };
+      var taskProperties = { textTask : url, submittedRealDate : creaDate  };
 			Meteor.call('task', taskProperties, function(error, id) {});
 			
 			//Router.go('accueilTasks', {date: parseInt(creaDate.split("/")[0]), month: parseInt(creaDate.split("/")[1]), year: parseInt(creaDate.split("/")[2])});
@@ -99,5 +106,19 @@ Template.accueilTasks.events ({
   'click .checkbox3': function (evt, tmpl) {
    Tasks.update(this._id, {$set: {doneTask: false}});
     
-  }
+  },
+	 'click .action': function (evt, tmpl) {
+		 
+		 var months = {'Jan':'0', 'Feb':'1', 'Mar':'2', 'Apr':'3', 'May':'4','Jun':'5', 'July':'6', 'Aug':'7', 'Sept':'8', 'Oct':'9', 'Nov':'10', 'Dec':'11'};
+		 var months1 = {'0':'Jan', '1':'Feb', '2':'Mar', '3':'Apr', '4':'May','5':'Jun', '6':'July', '7':'Aug', '8':'Sept', '9':'Oct', '10':'Nov', '11':'Dec'};
+		 var newDate = new Date();
+		 newDate.setDate(this.submittedRealDate.split("-")[0]);
+		 newDate.setMonth(months[this.submittedRealDate.split("-")[1]]);
+		 newDate.setFullYear(this.submittedRealDate.split("-")[2]);
+		 newDate.setTime(newDate.getTime()+ 24 * 3600 * 1000);
+		 alert(newDate);
+		 
+		 Tasks.update(this._id, {$set: {submittedRealDate: newDate.getDate() + "-" + months1[newDate.getMonth()] + "-" + newDate.getFullYear()}});
+   }  
+  
 });  

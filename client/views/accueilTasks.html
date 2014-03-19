@@ -43,13 +43,14 @@
                     {{else}}
                       <div class="display">
                         
-                        <div class="todo-text  doneItem">{{textTask}}</div>
+												<div class="todo-text  doneItem">{{textTask}}</div>
+												<p class="datePetit">{{submittedRealDate }}</p>
                       </div>
                     {{/if}}
                     </div>
                       <div class="col-md-1">
                   
-                        <a href="" class="destroy">suppr.</a>
+                        <a href="" class="destroy actions">suppr.</a>
           
                           
                   </div>	
@@ -62,7 +63,7 @@
                     <div class="checkbox2"></div>
           
                   </div>		
-                  <div class="col-md-10">
+                  <div class="col-md-9">
                     {{#if editing}}
                       <div class="edit">
                         <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
@@ -71,13 +72,15 @@
                       <div class="display">
                         
                         <div class="todo-text">{{textTask}}</div>
+												<p class="datePetit">{{submittedRealDate }}</p>
                       </div>
                     {{/if}}
                     </div>
-                      <div class="col-md-1">
-                  
-                        <a href="" class="destroy">{{submittedRealDate }}</a>
-          
+                      <div class="col-md-2">
+                  			<span class="glyphicon glyphicon-remove destroy"></span>
+												<span class="glyphicon glyphicon-circle-arrow-right action"></span>
+												
+         
                           
                   </div>	
                   
