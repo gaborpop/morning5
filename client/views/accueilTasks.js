@@ -4,7 +4,14 @@ var activateInput = function (input) {
   input.select();
 }
 Template.accueilTasks.helpers({
-  
+  	tasks:  function () {
+  		var thedate =  Session.get('viewDate');	
+			return Tasks.find({submittedRealDate: thedate, backlogTask: false}  );
+  },
+	btask:  function () {
+  	  
+		return Tasks.find({ backlogTask: true});
+  },
 	editing:  function () {
   return Session.equals('editing_itemname', this._id);
   },
@@ -44,7 +51,7 @@ Template.accueilTasks.helpers({
     var nbTask = Tasks.find({submittedRealDate: Session.get('viewDate') }).count();
     return nbTaskDone/nbTask * 100; 
   }
-	
+
 	
 
 	
@@ -69,6 +76,20 @@ Template.accueilTasks.events ({
       var taskProperties = { textTask : url, submittedRealDate : creaDate  };
 			Meteor.call('task', taskProperties, function(error, id) {});
 			
+			//Router.go('accueilTasks', {date: parseInt(creaDate.split("/")[0]), month: parseInt(creaDate.split("/")[1]), year: parseInt(creaDate.split("/")[2])});
+			}
+
+		},  
+	'keypress #backlogTaskInput': function(e, template) {
+    //e.preventDefault();
+    if (e.which === 13) {
+      var url = template.find("#backlogTaskInput").value;
+      
+      var creaDate = Session.get('viewDate');
+      
+      var taskProperties = { textTask : url, submittedRealDate : creaDate  };
+			Meteor.call('task2', taskProperties, function(error, id) {});
+			$.sidr('open', 'sidr');
 			//Router.go('accueilTasks', {date: parseInt(creaDate.split("/")[0]), month: parseInt(creaDate.split("/")[1]), year: parseInt(creaDate.split("/")[2])});
 			}
 
@@ -122,3 +143,9 @@ Template.accueilTasks.events ({
    }  
   
 });  
+
+Template.accueilTasks.rendered = function() {
+$('.ui.sidebar').sidebar('toggle');
+
+	
+};	

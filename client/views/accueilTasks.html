@@ -1,5 +1,24 @@
 <template name="accueilTasks">
-	<div class="container  ">
+	
+	
+	
+	<div class="container ">
+		<div class="ui variation toggle buttons">
+			<div class="ui button" data-variation=".left">Left</div>
+			
+		</div>	
+ 	
+		<div class="ui vertical overlay sidebar menu active">
+			<!-- Your content -->
+			<h5>Manage your task backlog : </h5>
+			<input type="text" class="form-control" id="backlogTaskInput" placeholder="add task to backlog">
+			{{#each btask}}
+			<p>{{textTask}}</p>
+			{{/each}}
+		</div>
+		
+		
+		
 		<div class="row dateClass well">
 			<div class="col-md-4">
         <a href="/todos/{{daybefore}}" class="pull-right"> ---day before</a>
@@ -35,7 +54,7 @@
                         <div class="checkbox3"></div>
           
                   </div>		
-                  <div class="col-md-10">
+                  <div class="col-md-9">
                     {{#if editing}}
                       <div class="edit">
                         <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
@@ -48,7 +67,7 @@
                       </div>
                     {{/if}}
                     </div>
-                      <div class="col-md-1">
+                      <div class="col-md-2">
                   
                         <span class="glyphicon glyphicon-remove destroy"></span>
           
@@ -63,7 +82,7 @@
                     <div class="checkbox2"></div>
           
                   </div>		
-                  <div class="col-md-10">
+                  <div class="col-md-9">
                     {{#if editing}}
                       <div class="edit">
                         <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
@@ -76,7 +95,7 @@
                       </div>
                     {{/if}}
                     </div>
-                      <div class="col-md-1">
+                      <div class="col-md-2">
                   			<span class="glyphicon glyphicon-remove destroy"></span>
 												<span class="glyphicon glyphicon-circle-arrow-right action"></span>
 												

@@ -8,7 +8,8 @@
       "accounts-ui-bootstrap-3": {},
       "spin": {},
       "fast-render": {},
-      "moment": {}
+      "moment": {},
+      "semantic-ui": {}
     },
     "packages": {
       "bootstrap-3": {
@@ -45,6 +46,11 @@
         "git": "https://github.com/acreeger/meteor-moment.git",
         "tag": "v2.5.1",
         "commit": "8c9bc5d3fc96705057737cb9743d555417f6e551"
+      },
+      "semantic-ui": {
+        "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
+        "tag": "v0.15.1",
+        "commit": "ee29706b4ccc99f2d44d5be1347a09a2f77d03cb"
       },
       "just-i18n": {
         "git": "https://github.com/subhog/meteor-just-i18n.git",

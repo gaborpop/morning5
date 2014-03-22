@@ -259,3 +259,10 @@ color: green;
 	text-decoration:underline;
 }
 
+#simple-menu {
+	position:absolute;
+	z-index:100;
+	
+	top:100px;
+}
+

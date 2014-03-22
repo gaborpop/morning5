@@ -33,8 +33,9 @@ Router.map( function () {
       Session.set('viewDate', thedate);
 			Session.set('realDate', realDate);
       console.log(Session.get('viewDate'));
-      task = { tasks: Tasks.find({submittedRealDate: thedate}  )};
-      return task;
+			//task = { tasks: Tasks.find({submittedRealDate: thedate, backlogTask: false}  )};
+			//task2 = { tasks2: Tasks.find() };
+      //return [task, task2];
     },
 
     
