@@ -266,3 +266,30 @@ color: green;
 	top:100px;
 }
 
+.actions2 {
+	font-size:12px;
+}
+.destroy2 {
+	cursor: pointer;
+	font-size:12px;
+  
+}
+.destroy2:hover {
+	
+	text-decoration:underline;
+}
+
+.action2:hover {
+	
+	text-decoration:underline;
+}
+p.bkTaskClass {
+  word-wrap: break-word;
+  margin-left:5px;
+  
+}
+.bkTaskClass:hover {
+   text-decoration:underline;
+ 
+  cursor: pointer;
+}

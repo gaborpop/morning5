@@ -1,6 +1,6 @@
 Router.configure({
-	layoutTemplate: 'layout',
-  loadingTemplate: 'loading'
+	autoRender: false
+  
   
 });
 
@@ -11,8 +11,7 @@ Router.map( function () {
   });
   this.route('accueilTasks', {
     path: '/todos/:date/:month/:year',
-		waitOn: function () {
-    return Meteor.subscribe('tasks');},
+	
     fastRender: true,
     data: function () {
       var curD = parseInt(this.params.date);

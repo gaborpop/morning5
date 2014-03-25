@@ -3,17 +3,23 @@
 	
 	
 	<div class="container ">
-		<div class="ui variation toggle buttons">
-			<div class="ui button" data-variation=".left">Left</div>
-			
-		</div>	
+		<a id="simple-menu" href="#sidr">Backlog</a>
  	
-		<div class="ui vertical overlay sidebar menu active">
+		<div id="sidr">
 			<!-- Your content -->
-			<h5>Manage your task backlog : </h5>
-			<input type="text" class="form-control" id="backlogTaskInput" placeholder="add task to backlog">
+			<h4>Manage your task backlog : </h4>
+			<input type="text" class="form-control addBacklogTask" id="backlogTaskInput" placeholder="add task to backlog">
 			{{#each btask}}
-			<p>{{textTask}}</p>
+      
+        <div class="row">
+          <div class="col-md-9">
+            <p class="bkTaskClass">{{textTask}}</p>
+          </div>	  
+          <div class="col-md-3">
+            <span class="glyphicon glyphicon-remove destroy2"></span>
+            <span class="glyphicon glyphicon-circle-arrow-right action2"></span>
+          </div>		
+        </div>							
 			{{/each}}
 		</div>
 		
@@ -21,21 +27,16 @@
 		
 		<div class="row dateClass well">
 			<div class="col-md-4">
-        <a href="/todos/{{daybefore}}" class="pull-right"> ---day before</a>
+        <a href="/todos/{{daybefore}}" class="pull-right"> ---previous day</a>
 			</div>
 				<div class="col-md-4">
 					<h3 class="text-center">Today : {{ today }}</h3>
 			</div>
 				<div class="col-md-4">
-					<a href="/todos/{{dayafter}}" class="pull-left">tomorrow---</a>
+					<a href="/todos/{{dayafter}}" class="pull-left">next day---</a>
 			</div>
 		</div>
-		<form role="form" class="todoForm">
-			<div class="form-group">
-				
-				<input type="text" class="form-control taskClass input-lg" id="task1" placeholder="New Task">
-			</div>
-		</form>
+		
     
     
     <div class="progress progress-striped">
@@ -44,69 +45,7 @@
   </div>
 </div>
     
-    
-		<div class="todoBlock">
-			{{#each tasks}}
-        {{#if doneTask}}
-                <div class="row todoItem">
-                  <div class="col-md-1">
-                  
-                        <div class="checkbox3"></div>
-          
-                  </div>		
-                  <div class="col-md-9">
-                    {{#if editing}}
-                      <div class="edit">
-                        <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
-                      </div>
-                    {{else}}
-                      <div class="display">
-                        
-												<div class="todo-text  doneItem">{{textTask}}</div>
-												<p class="datePetit">{{submittedRealDate }}</p>
-                      </div>
-                    {{/if}}
-                    </div>
-                      <div class="col-md-2">
-                  
-                        <span class="glyphicon glyphicon-remove destroy"></span>
-          
-                          
-                  </div>	
-                  
-                </div>	
-         {{else}}  
-               <div class="row todoItem">
-                  <div class="col-md-1">
-                 
-                    <div class="checkbox2"></div>
-          
-                  </div>		
-                  <div class="col-md-9">
-                    {{#if editing}}
-                      <div class="edit">
-                        <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
-                      </div>
-                    {{else}}
-                      <div class="display">
-                        
-                        <div class="todo-text">{{textTask}}</div>
-												<p class="datePetit">{{submittedRealDate }}</p>
-                      </div>
-                    {{/if}}
-                    </div>
-                      <div class="col-md-2">
-                  			<span class="glyphicon glyphicon-remove destroy"></span>
-												<span class="glyphicon glyphicon-circle-arrow-right action"></span>
-												
-         
-                          
-                  </div>	
-                  
-                </div>	
-      
-       {{/if}}
-			{{/each}}
-		</div>
+		{{> taskTable }}    
+		
 	</div>
 </template>

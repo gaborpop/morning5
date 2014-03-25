@@ -1,0 +1,76 @@
+<template name="taskTable">
+	<form role="form" class="todoForm">
+			<div class="form-group">
+				
+				<input type="text" class="form-control taskClass input-lg" id="task1" placeholder="New Task">
+			</div>
+		</form>
+	<div class="todoBlock">
+			{{#each tasks}}
+        {{#if doneTask}}
+                <div class="row todoItem">
+                  <div class="col-md-1">
+                  
+                        <div class="checkbox3"></div>
+          
+                  </div>		
+                  <div class="col-md-9">
+                    {{#if editing}}
+                      <div class="edit">
+                        <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
+                      </div>
+                    {{else}}
+                      <div class="display">
+                        
+												<div class="todo-text  doneItem">{{textTask}}</div>
+												<p class="datePetit">{{submittedRealDate }}</p>
+                      </div>
+                    {{/if}}
+                    </div>
+                      <div class="col-md-2">
+                  
+                        <span class="glyphicon glyphicon-remove destroy"></span>
+          
+                          
+                  </div>	
+                  
+                </div>	
+         {{else}}  
+               <div class="row todoItem">
+                  <div class="col-md-1">
+                 
+                    <div class="checkbox2"></div>
+          
+                  </div>		
+                  <div class="col-md-9">
+                    {{#if editing}}
+                      <div class="edit">
+                        <input  class="form-control input-lg input-ctrl" id="todo-input" type="text" value="{{textTask}}" />
+                      </div>
+                    {{else}}
+                      <div class="display">
+                        
+                        <div class="todo-text">{{textTask}}</div>
+												<p class="datePetit">{{submittedRealDate }}</p>
+                      </div>
+                    {{/if}}
+                    </div>
+                      <div class="col-md-2">
+                  			<span class="glyphicon glyphicon-remove destroy"></span>
+												<span class="glyphicon glyphicon-circle-arrow-right action"></span>
+												
+         
+                          
+                  </div>	
+                  
+                </div>	
+      
+       {{/if}}
+			{{/each}}
+		</div>
+	
+	
+	
+	
+	
+</template>

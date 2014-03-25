@@ -10,3 +10,36 @@
   <link rel="shortcut icon" type="image/x-icon" href="https://y7v4p6k4.ssl.hwcdn.net/placeholder/favicon.ico">
   <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
 </head>
+<body>
+  <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+					<a class="blog-nav-item active" href="/">Morning5</a>
+					
+					{{#if currentUser}}
+					
+					<a class="blog-nav-item text-right floatright" href="/sign-out">Sign-out</a>
+          <a class="blog-nav-item text-right floatright" href="/todos/{{date}}">Today's tasks</a>
+					{{else}}
+         	<a class="blog-nav-item text-right floatright" href="/sign-in">Sign-in</a>
+					<a class="blog-nav-item text-right floatright" href="/sign-up">Sign-up</a>
+					{{/if}}
+        </nav>
+      </div>
+    </div>
+	
+	<div class="container">
+		
+	</div>	
+	{{renderRouter}}
+	<div class="blog-footer">
+      <p>App built by <a href="http://www.carrouselstudio.fr/">Carrousel Studio</a> copyright 2014</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+  
+  
+  
+</body>  
+
